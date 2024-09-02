@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardar Cliente</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/formulario_cliente.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mensaje_flash.css') }}">
+</head>
+<body>
+    <h1>Guardar Cliente</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul id="flash-messages" class="flash-messages">
+        {% for category, message in messages %}
+            {% if category == 'success' %}
+                <li class="flash-{{ category }}" style="background-color: #d4edda; color: #28a745; padding: 10px; border-radius: 5px; text-align: center;">
+                    {{ message }}
+                </li>
+            {% elif category == 'error' or category == 'elimination' %}
+                <li class="flash-{{ category }}" style="background-color: #f8d7da; color: #dc3545; padding: 10px; border-radius: 5px; text-align: center;">
+                    {{ message }}
+                </li>
+            {% else %}
+                <li class="flash-{{ category }}" style="background-color: #d1ecf1; color: #0c5460; padding: 10px; border-radius: 5px; text-align: center;">
+                    {{ message }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
+
+    <form action="{{ url_for('guardar_cliente') }}" method="POST">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo de la Empresa" class="logo">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        
+        <div>
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
+        </div>
+        
+        <div>
+            <label for="correo_electronico">Correo Electrónico:</label>
+            <input type="email" id="correo_electronico" name="correo_electronico" required>
+        </div>
+        
+        <div>
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+        </div>
+        
+        <div class="button-container">
+            <button type="submit">Guardar</button>
+            <a href="{{ url_for('clientes') }}" class="button-link">Lista de clientes</a>
+        </div>
+    </form>
+</body>
+</html>

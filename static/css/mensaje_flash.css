@@ -1,0 +1,39 @@
+body .flash-success {
+    color: #28a745 !important;
+    background-color: #d4edda !important;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+}
+
+body .flash-error {
+    color: #dc3545 !important;
+    background-color: #f8d7da !important;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+}
+
+body .flash-warning {
+    color: #856404 !important;
+    background-color: #fff3cd !important;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+}
+
+body .flash-info {
+    color: #17a2b8 !important;
+    background-color: #d1ecf1 !important;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+}
+
+body ul.flash-messages {
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 20px auto !important;
+    width: 50% !important;
+    text-align: center !important;
+}

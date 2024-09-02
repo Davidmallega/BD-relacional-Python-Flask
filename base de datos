@@ -1,0 +1,30 @@
+CREATE DATABASE TuMejorOferta;
+USE TuMejorOferta;
+CREATE TABLE Cliente (
+    ClienteID INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Dirección VARCHAR(200),
+    CorreoElectrónico VARCHAR(100) UNIQUE NOT NULL,
+    Teléfono VARCHAR(20)
+);
+CREATE TABLE Producto (
+    ProductoID INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Descripción TEXT,
+    Precio DECIMAL(10, 2) NOT NULL
+);
+CREATE TABLE Pedido (
+    PedidoID INT AUTO_INCREMENT PRIMARY KEY,
+    Fecha DATE NOT NULL,
+    Estado VARCHAR(50) NOT NULL,
+    ClienteID INT,
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID) ON DELETE CASCADE
+);
+CREATE TABLE PedidoProducto (
+    PedidoID INT,
+    ProductoID INT,
+    Cantidad INT NOT NULL,
+    PRIMARY KEY (PedidoID, ProductoID),
+    FOREIGN KEY (PedidoID) REFERENCES Pedido(PedidoID) ON DELETE CASCADE,
+    FOREIGN KEY (ProductoID) REFERENCES Producto(ProductoID) ON DELETE CASCADE
+);

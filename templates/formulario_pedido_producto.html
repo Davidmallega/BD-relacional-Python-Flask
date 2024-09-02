@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto al Pedido</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/formulario_pedido_producto.css') }}">
+</head>
+<body>
+    <h1>Agregar Producto al Pedido #{{ pedido.PedidoID }}</h1>
+    <form action="{{ url_for('agregar_producto_a_pedido', pedido_id=pedido.PedidoID) }}" method="POST">
+        <div>
+            <label for="producto_id">Producto:</label>
+            <select id="producto_id" name="producto_id" required>
+                {% for producto in productos %}
+                <option value="{{ producto[0] }}">{{ producto[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" required>
+        </div>
+        <div class="button-container">
+          <button type="submit" class="btn-primary">Guardar</button>
+          <a href="{{ url_for('pedidos') }}" class="btn-primary">Lista de pedidos</a>
+      </div>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/background.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+</head>
+<body>
+    <div class="title-container">
+        <h1>Menú Principal</h1>
+    </div>
+    <nav class="nav-container">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo de la Empresa" class="logo">
+        </div>
+        <ul class="menu">
+            <li onmouseenter="showSubmenu('clientes-submenu')" onmouseleave="hideSubmenu('clientes-submenu')">
+                <a href="#">Clientes</a>
+                <ul id="clientes-submenu" class="submenu" onmouseenter="showSubmenu('clientes-submenu')" onmouseleave="hideSubmenu('clientes-submenu')">
+                    <li><a href="{{ url_for('mostrar_formulario') }}">Ingresar Cliente</a></li>
+                    <li><a href="{{ url_for('clientes') }}">Lista de Clientes</a></li>
+                </ul>
+            </li>
+            <li onmouseenter="showSubmenu('productos-submenu')" onmouseleave="hideSubmenu('productos-submenu')">
+                <a href="#">Productos</a>
+                <ul id="productos-submenu" class="submenu" onmouseenter="showSubmenu('productos-submenu')" onmouseleave="hideSubmenu('productos-submenu')">
+                    <li><a href="{{ url_for('mostrar_formulario_producto') }}">Ingresar Producto</a></li>
+                    <li><a href="{{ url_for('productos') }}">Lista de Productos</a></li>
+                </ul>
+            </li>
+            <li onmouseenter="showSubmenu('servicios-submenu')" onmouseleave="hideSubmenu('servicios-submenu')">
+                <a href="#">Servicios</a>
+                <ul id="servicios-submenu" class="submenu" onmouseenter="showSubmenu('servicios-submenu')" onmouseleave="hideSubmenu('servicios-submenu')">
+                    <li><a href="{{ url_for('mostrar_formulario_pedido') }}">Ingresar Pedido</a></li>
+                    <li><a href="{{ url_for('pedidos') }}">Lista de Pedidos</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>
+

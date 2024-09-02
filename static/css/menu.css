@@ -1,0 +1,104 @@
+nav {
+    padding: 15px;
+    text-align: center;
+}
+
+.nav-container {
+    background-color: #ffffffda; /* Fondo común para logo y menú */
+    border-radius: 10px; /* Bordes redondeados para todo el contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    width: 80%; /* Ancho común */
+    margin: 0 auto; /* Centra el contenedor */
+    padding: 20px; /* Espaciado interno */
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px; /* Espaciado entre el logo y el menú */
+}
+
+.logo {
+    max-width: 150px; /* Ajusta el tamaño del logo */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0; /* Elimina márgenes adicionales */
+}
+
+.menu > li { /* Separación entre los elementos del menú */
+    margin: 0 60px;
+    position: relative;
+}
+
+.menu > li > a {  /* Estilo del texto del menú */
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 195%;
+    left: 50%; /* Posiciona el submenú a la mitad del elemento padre */
+    transform: translateX(-50%); /* Mueve el submenú hacia la izquierda un 50% de su propio ancho para centrarlo */
+    background-color: #ffffffda;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    border-top-left-radius: 0px;      /* Esquina superior izquierda */
+    border-top-right-radius: 0px;     /* Esquina superior derecha */
+    border-bottom-left-radius: 10px;   /* Esquina inferior izquierda */
+    border-bottom-right-radius: 10px;  /* Esquina inferior derecha */
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.submenu li {
+    margin: 20px 0; /* Espaciado entre los elementos del submenu */
+}
+
+.submenu li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    display: block;
+    justify-content: center;
+}
+
+.submenu li a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Asegura que el menú ocupe el mismo ancho que el contenedor */
+}
+
+.title-container {
+    text-align: center;
+    background-color: #ffffffda; /* Fondo blanco semitransparente */
+    padding: 10px 20px; /* Espaciado interno para darle aire al texto */
+    border-radius: 10px; /* Bordes redondeados */
+    margin: 20px auto; /* Centra el contenedor y le da un margen superior e inferior */
+    width: 80%; /* Ajusta el ancho del contenedor para que coincida con el menú */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+.title-container h1 {
+    color: #333; /* Color de texto oscuro para buen contraste */
+    font-size: 24px; /* Tamaño de fuente para destacar el título */
+    margin: 0; /* Elimina el margen predeterminado del h1 */
+}

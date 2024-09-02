@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_producto.css') }}">
+</head>
+<body>
+    <h1>Editar Producto</h1>
+    <form action="{{ url_for('actualizar_producto', producto_id=producto[0]) }}" method="POST">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ producto[1] }}" required>
+        </div>
+
+        <div>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion">{{ producto[2] }}</textarea>
+        </div>
+
+        <div>
+            <label for="precio">Precio:</label>
+            <input type="text" id="precio" name="precio" value="{{ producto[3] }}" required>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="btn-primary">Guardar Cambios</button>
+            <a href="{{ url_for('productos') }}" class="btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</body>
+</html>

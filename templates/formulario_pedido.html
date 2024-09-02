@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardar Pedido</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/formulario_pedido.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mensaje_flash.css') }}">
+</head>
+<body>
+    <h1>Guardar Pedido</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul id="flash-messages" class="flash-messages">
+            {% for category, message in messages %}
+                {% if category == 'success' %}
+                    <li class="flash-{{ category }}" style="background-color: #d4edda; color: #28a745; padding: 10px; border-radius: 5px; text-align: center;">
+                        {{ message }}
+                    </li>
+                {% elif category == 'error' or category == 'elimination' %}
+                    <li class="flash-{{ category }}" style="background-color: #f8d7da; color: #dc3545; padding: 10px; border-radius: 5px; text-align: center;">
+                        {{ message }}
+                    </li>
+                {% else %}
+                    <li class="flash-{{ category }}" style="background-color: #d1ecf1; color: #0c5460; padding: 10px; border-radius: 5px; text-align: center;">
+                        {{ message }}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('guardar_pedido') }}" method="POST">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo de la Empresa" class="logo">
+        <div>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+        </div>
+
+        <div>
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado" required>
+                <option value="En proceso">En proceso</option>
+                <option value="Enviado">Enviado</option>
+                <option value="Cancelado">Cancelado</option>
+                <option value="Recibido">Recibido</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="cliente_id">Cliente:</label>
+            <select id="cliente_id" name="cliente_id" required>
+                {% for cliente in clientes %}
+                <option value="{{ cliente[0] }}">{{ cliente[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="button-container">
+            <button type="submit" class="btn-primary">Guardar</button>
+            <a href="{{ url_for('pedidos') }}" class="btn-primary">Lista de pedidos</a>
+        </div>
+    </form>
+
+</body>
+</html>

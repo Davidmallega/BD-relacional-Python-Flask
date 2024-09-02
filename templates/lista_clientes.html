@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes Registrados</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lista_clientes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mensaje_flash.css') }}">
+</head>
+<body>
+    <h1>Lista de Clientes Registrados</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul id="flash-messages" class="flash-messages">
+        {% for category, message in messages %}
+            {% if category == 'success' %}
+                <li class="flash-{{ category }}" style="background-color: #d4edda; color: #28a745; padding: 10px; border-radius: 5px; text-align: center;">
+                    {{ message }}
+                </li>
+            {% elif category == 'error' or category == 'elimination' %}
+                <li class="flash-{{ category }}" style="background-color: #f8d7da; color: #dc3545; padding: 10px; border-radius: 5px; text-align: center;">
+                    {{ message }}
+                </li>
+            {% else %}
+                <li class="flash-{{ category }}" style="background-color: #d1ecf1; color: #0c5460; padding: 10px; border-radius: 5px; text-align: center;">
+                    {{ message }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
+
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo de la Empresa" class="logo">
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Correo Electrónico</th>
+                <th>Teléfono</th>
+                <th style="width: 200px;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente[0] }}</td>
+                <td>{{ cliente[1] }}</td>
+                <td>{{ cliente[2] }}</td>
+                <td>{{ cliente[3] }}</td>
+                <td>{{ cliente[4] }}</td>
+                <td>
+                    <a href="{{ url_for('editar_cliente', cliente_id=cliente[0]) }}" class="btn btn-warning">Editar</a>
+                    <form action="{{ url_for('eliminar_cliente', cliente_id=cliente[0]) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <div class="button-container">
+        <a href="{{ url_for('mostrar_formulario') }}" class="btn-primary">Ingresar Nuevo Cliente</a>
+        <a href="{{ url_for('index') }}" class="btn-primary">Inicio</a>
+    </div>
+
+</body>
+</html>

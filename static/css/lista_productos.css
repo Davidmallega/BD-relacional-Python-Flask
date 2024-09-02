@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #444;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #ffffffda;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+a {
+    color: #008cba;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #fd275d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #006494;
+}
+
+.button-container {
+    text-align: center; /* Centra los botones */
+    margin-top: 20px;   /* Margen superior para separar los botones del contenido */
+}
+
+.button-link {
+    display: inline-block;
+    background-color: #008cba;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none !important; /* Asegura que no haya subrayado */
+    font-size: 16px;
+    margin: 0 10px; /* Espaciado entre los botones */
+}
+
+.button-link:hover {
+    background-color: #006494;
+}
+
+.btn-warning {
+    background-color: #f0ad4e; /* Color naranja */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Asegura que no tenga subrayado */
+    display: inline-block;
+}
+
+.btn-warning:hover {
+    background-color: #ec971f; /* Color naranja más oscuro al hacer hover */
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Asegura que no tenga subrayado */
+    display: inline-block;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}

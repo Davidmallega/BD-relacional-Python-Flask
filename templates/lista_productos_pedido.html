@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos en el Pedido</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lista_producto_pedido.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mensaje_flash.css') }}">
+</head>
+<body>
+    <h1>Productos en el Pedido</h1>
+    <p>Pedido realizado por: <strong>{{ nombre_cliente }}</strong></p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul id="flash-messages" class="flash-messages">
+        {% for category, message in messages %}
+            {% if category == 'success' %}
+                <li class="flash-{{ category }}" style="background-color: #d4edda; color: #28a745; padding: 10px; border-radius: 5px; text-align: center;">
+                    {{ message }}
+                </li>
+            {% elif category == 'error' or category == 'elimination' %}
+                <li class="flash-{{ category }}" style="background-color: #f8d7da; color: #dc3545; padding: 10px; border-radius: 5px; text-align: center;">
+                    {{ message }}
+                </li>
+            {% else %}
+                <li class="flash-{{ category }}" style="background-color: #d1ecf1; color: #0c5460; padding: 10px; border-radius: 5px; text-align: center;">
+                    {{ message }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
+
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto[0] }}</td>
+                <td>{{ producto[1] }}</td>
+                <td>{{ "${:,.0f}".format(producto[2]) }}</td>
+                <td>{{ producto[3] }}</td>
+                <td>
+                    <form action="{{ url_for('eliminar_producto_del_pedido', pedido_id=pedido_id, producto_id=producto[5]) }}" method="POST" style="display:inline;">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <div class="button-container">
+        <a href="{{ url_for('pedidos') }}" class="btn-primary">Volver a la lista de pedidos</a>
+    </div>
+</body>
+</html>

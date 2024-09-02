@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Estado del Pedido</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_estado_pedido.css') }}">
+</head>
+<body>
+    <h1>Editar Estado del Pedido #{{ pedido['PedidoID'] }}</h1>
+    <form action="{{ url_for('guardar_estado_pedido', pedido_id=pedido['PedidoID']) }}" method="POST">
+        <div>
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado">
+                <option value="En proceso" {% if pedido['Estado'] == 'En proceso' %}selected{% endif %}>En proceso</option>
+                <option value="Enviado" {% if pedido['Estado'] == 'Enviado' %}selected{% endif %}>Enviado</option>
+                <option value="Cancelado" {% if pedido['Estado'] == 'Cancelado' %}selected{% endif %}>Cancelado</option>
+                <option value="Recibido" {% if pedido['Estado'] == 'Recibido' %}selected{% endif %}>Recibido</option>
+            </select>
+        </div>
+        <div class="button-container">
+            <button type="submit" class="btn-primary">Guardar</button>
+            <a href="{{ url_for('pedidos') }}" class="btn-primary">Lista de pedidos</a>
+        </div>
+        
+    </form>
+</body>
+</html>
